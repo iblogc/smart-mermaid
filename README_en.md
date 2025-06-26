@@ -182,6 +182,59 @@ Smart Mermaid offers three usage modes:
 * **State Management**: React Hook + Local Storage
 * **Theme Support**: next-themes (dark/light mode)
 
+## Deployment Guide
+
+### 🐳 Docker Quick Deployment
+
+The simplest deployment method without configuring Node.js environment:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/smart-mermaid.git
+cd smart-mermaid
+
+# Start with docker-compose
+docker-compose up -d
+
+# Access the application
+# Open your browser and visit: http://localhost:3000
+```
+
+### 🐋 Docker Manual Build & Run
+
+You can also choose to manually build and run the Docker image:
+
+```bash
+# Build Docker image
+docker build -t smart-mermaid .
+
+# Run Docker container
+docker run -d \
+  --name smart-mermaid \
+  -p 8004:3000 \
+  --restart always \
+  -e AI_API_URL=https://api.openai.com/v1 \
+  -e AI_API_KEY=sk-xxxxxxxxxxxxxxxx \
+  -e ACCESS_PASSWORD=your_password \
+  smart-mermaid
+```
+
+**Docker Environment Variables**:
+
+You can configure the application using environment variables, which are the same as those in the `.env.local` file:
+
+| Environment Variable | Description | Example Value |
+|---------|------|-------|
+| `AI_API_URL` | Base URL of the AI service API | `https://api.openai.com/v1` |
+| `AI_API_KEY` | AI service API key | `sk-xxxxxxxxxxxxxxxx` |
+| `AI_MODEL_NAME` | AI model name to use | `gpt-3.5-turbo` |
+| `AI_MODELS` | List of available models in format "modelID:displayName:description", connected by commas | `gpt-3.5-turbo:GPT-3.5:Fast response,gpt-4:GPT-4:Advanced reasoning` |
+| `NEXT_PUBLIC_MAX_CHARS` | Maximum input characters | `20000` |
+| `NEXT_PUBLIC_DAILY_USAGE_LIMIT` | Daily free usage limit | `5` |
+| `ACCESS_PASSWORD` | Access password | `your_password` |
+
+These environment variables can be specified using the `-e` parameter in the Docker run command or set in a Docker Compose configuration file.
+
 ## Local Deployment Guide
 
 ### Prerequisites

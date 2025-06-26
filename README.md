@@ -218,6 +218,41 @@ docker-compose up -d
 
 详细的 Docker 部署说明请参考：[Docker 部署指南](./DOCKER_DEPLOY.md)
 
+### 🐋 Docker 手动构建部署
+
+您也可以选择手动构建和运行 Docker 镜像：
+
+```bash
+# 构建 Docker 镜像
+docker build -t smart-mermaid .
+
+# 运行 Docker 容器
+docker run -d \
+  --name smart-mermaid \
+  -p 8004:3000 \
+  --restart always \
+  -e AI_API_URL=https://api.openai.com/v1 \
+  -e AI_API_KEY=sk-xxxxxxxxxxxxxxxx \
+  -e ACCESS_PASSWORD=your_password \
+  smart-mermaid
+```
+
+**Docker 环境变量说明**:
+
+您可以通过环境变量来配置应用，与 `.env.local` 文件中的配置项相同：
+
+| 环境变量 | 说明 | 示例值 |
+|---------|------|-------|
+| `AI_API_URL` | AI 服务 API 的基础地址 | `https://api.openai.com/v1` |
+| `AI_API_KEY` | AI 服务 API 密钥 | `sk-xxxxxxxxxxxxxxxx` |
+| `AI_MODEL_NAME` | 使用的 AI 模型名称 | `gpt-3.5-turbo` |
+| `AI_MODELS` | 可选模型列表，格式为"模型ID:显示名称:描述"，使用半角逗号连接多个模型 | `gpt-3.5-turbo:GPT-3.5:快速响应,gpt-4:GPT-4:高级推理` |
+| `NEXT_PUBLIC_MAX_CHARS` | 最大输入字符数 | `20000` |
+| `NEXT_PUBLIC_DAILY_USAGE_LIMIT` | 每日免费使用次数 | `5` |
+| `ACCESS_PASSWORD` | 访问密码 | `your_password` |
+
+这些环境变量可以在 Docker 运行命令中使用 `-e` 参数指定，也可以使用 Docker Compose 配置文件进行设置。
+
 ### 📦 本地部署指南
 
 #### 环境要求
