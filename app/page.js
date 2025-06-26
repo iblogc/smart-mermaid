@@ -536,13 +536,13 @@ export default function Home() {
       <Dialog open={showContactDialog} onOpenChange={setShowContactDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>联系作者</DialogTitle>
+            <DialogTitle>联系开发人员</DialogTitle>
             <DialogDescription>
               <div className="py-4">
-                <p className="mb-2">如需更多使用次数或技术支持，请扫描下方二维码联系作者（注明目的）</p>
-                <div className="flex justify-center my-4">
+                <p className="mb-2">如需更多使用次数或技术支持，请联系开发人员</p>
+                {/* <div className="flex justify-center my-4">
                   <img src="/qrcode.png" alt="联系二维码" className="w-48" />
-                </div>
+                </div> */}
                 <p className="text-sm text-muted-foreground">
                   提示：您也可以在设置中配置自己的AI服务密钥，即可享有无限使用权限
                 </p>
@@ -567,12 +567,12 @@ export default function Home() {
                 <p className="mb-2">您今日的使用次数已达上限 ({usageLimit}次/天)</p>
                 <p className="mb-4">如需更多使用次数，您可以：</p>
                 <ul className="list-disc list-inside space-y-2 text-sm mb-4">
-                  <li>扫描下方二维码联系作者（注明目的）</li>
+                  <li>联系开发人员获取更多使用次数</li>
                   <li>在设置中配置您自己的AI服务密钥</li>
                 </ul>
-                <div className="flex justify-center my-4">
+                {/* <div className="flex justify-center my-4">
                   <img src="/qrcode.png" alt="联系二维码" className="w-48" />
-                </div>
+                </div> */}
               </div>
             </DialogDescription>
           </DialogHeader>
